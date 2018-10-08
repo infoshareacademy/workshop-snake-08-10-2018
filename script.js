@@ -6,15 +6,11 @@ const _board = [
 ]
 
 const renderBoard = () => {
-    _board.forEach(
-        (row, i, a) => renderRow(row)
-    )
+    _board.forEach(renderRow)
 }
 
 const renderRow = (row) => {
-    row.forEach(
-        (cell, i, a) => renderCell(cell)
-    )
+    row.forEach(renderCell)
 }
 
 const renderCell = (cell) => {
