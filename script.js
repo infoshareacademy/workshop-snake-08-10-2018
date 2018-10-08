@@ -6,7 +6,7 @@ const GAME_TICK = 500
 let _board = null
 let _direction = 'up'
 
-const _snake = [
+let _snake = [
     { x: HALF_BOARD_DIMENSION, y: HALF_BOARD_DIMENSION },
     { x: HALF_BOARD_DIMENSION, y: HALF_BOARD_DIMENSION + 1 },
     { x: HALF_BOARD_DIMENSION, y: HALF_BOARD_DIMENSION + 2 }
@@ -14,7 +14,7 @@ const _snake = [
 
 const gameTick = () => {
     checkIfMoveIsAvailable()
-    
+
     renderBoard()
 }
 
@@ -30,14 +30,14 @@ const checkIfMoveIsAvailable = () => {
         _board[nextHeadPosition.y] &&
         _board[nextHeadPosition.y][nextHeadPosition.x]
     ){
-        move()
+        move(nextHeadPosition)
     }else{
         endGame()
     }
 }
 
-const move = () => { 
-    console.log('Im moving!')
+const move = (nextHeadPosition) => { 
+    _snake = [nextHeadPosition].concat(_snake).slice(0, -1)
 }
 
 const endGame = () => {
