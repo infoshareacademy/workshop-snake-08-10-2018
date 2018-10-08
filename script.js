@@ -1,9 +1,25 @@
 const CELL_DIMENSION = 10
+const BOARD_DIMENSION = 20
+const HALF_BOARD_DIMENSION = Math.round(BOARD_DIMENSION / 2) - 1
 
 let _board = null
 
+const _snake = [
+    { x: HALF_BOARD_DIMENSION, y: HALF_BOARD_DIMENSION },
+    { x: HALF_BOARD_DIMENSION, y: HALF_BOARD_DIMENSION + 1 },
+    { x: HALF_BOARD_DIMENSION, y: HALF_BOARD_DIMENSION + 2 }
+]
+
 const init = () => {
-    _board = makeBoardArray(10)
+    _board = makeBoardArray(BOARD_DIMENSION)
+    _snake.forEach((snakePosition, i) => {
+        if(i === 0){
+            _board[snakePosition.y][snakePosition.x] = 'H'
+        }else{
+            _board[snakePosition.y][snakePosition.x] = 0
+        }
+    })
+
     renderBoard()
 }
 
