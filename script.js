@@ -4,6 +4,7 @@ const HALF_BOARD_DIMENSION = Math.round(BOARD_DIMENSION / 2) - 1
 const GAME_TICK = 500
 
 let _board = null
+let _direction = 'up'
 
 const _snake = [
     { x: HALF_BOARD_DIMENSION, y: HALF_BOARD_DIMENSION },
@@ -13,6 +14,11 @@ const _snake = [
 
 const gameTick = () => {
     renderBoard()
+}
+
+const endGame = () => {
+    alert('YOU LOST!')
+    window.location = ''
 }
 
 const init = () => {
