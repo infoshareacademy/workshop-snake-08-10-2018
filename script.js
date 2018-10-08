@@ -1,6 +1,7 @@
 const CELL_DIMENSION = 10
 const BOARD_DIMENSION = 20
 const HALF_BOARD_DIMENSION = Math.round(BOARD_DIMENSION / 2) - 1
+const GAME_TICK = 500
 
 let _board = null
 
@@ -9,6 +10,10 @@ const _snake = [
     { x: HALF_BOARD_DIMENSION, y: HALF_BOARD_DIMENSION + 1 },
     { x: HALF_BOARD_DIMENSION, y: HALF_BOARD_DIMENSION + 2 }
 ]
+
+const gameTick = () => {
+    renderBoard()
+}
 
 const init = () => {
     _board = makeBoardArray(BOARD_DIMENSION)
@@ -19,6 +24,11 @@ const init = () => {
             _board[snakePosition.y][snakePosition.x] = 0
         }
     })
+
+    setInterval(
+        gameTick,
+        GAME_TICK
+    )
 
     renderBoard()
 }
@@ -32,6 +42,8 @@ const makeBoardArray = (dimension) => {
 }
 
 const renderBoard = () => {
+    document.body.innerText = ''
+    
     _board.forEach(renderRow)
 }
 
