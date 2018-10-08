@@ -55,6 +55,8 @@ const endGame = () => {
 }
 
 const init = () => {
+    addArrowsListeners()
+
     setInterval(
         gameTick,
         GAME_TICK
@@ -121,6 +123,32 @@ const renderCell = (cell, rowDiv) => {
     }
 
     rowDiv.appendChild(cellDiv)
+}
+
+const addArrowsListeners = () => {
+    window.addEventListener(
+        'keydown',
+        (event) => {
+            switch(event.key){
+                case 'ArrowUp':
+                    event.preventDefault()
+                    _direction = 'up'
+                    break
+                case 'ArrowDown':
+                    event.preventDefault()
+                    _direction = 'down'
+                    break
+                case 'ArrowLeft':
+                    event.preventDefault()
+                    _direction = 'left'
+                    break
+                case 'ArrowRight':
+                    event.preventDefault()
+                    _direction = 'right'
+                    break
+            }
+        }
+    )
 }
 
 init()
