@@ -10,11 +10,19 @@ const renderBoard = () => {
 }
 
 const renderRow = (row) => {
-    row.forEach(renderCell)
+    const rowDiv = document.createElement('div')
+
+    row.forEach((cell, i, a) => renderCell(cell, rowDiv))
+
+    document.body.appendChild(rowDiv)
 }
 
-const renderCell = (cell) => {
-    console.log(cell)
+const renderCell = (cell, rowDiv) => {
+    const cellDiv = document.createElement('div')
+
+    cellDiv.innerText = cell
+
+    rowDiv.appendChild(cellDiv)
 }
 
 renderBoard()
