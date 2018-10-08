@@ -1,5 +1,12 @@
-const CELL_DIMENSION = 10
+const windowDimension = (
+    window.innerWidth < window.innerHeight ?
+        window.innerWidth
+        :
+        window.innerHeight
+)
+
 const BOARD_DIMENSION = 20
+const CELL_DIMENSION = Math.round(windowDimension / BOARD_DIMENSION)
 const HALF_BOARD_DIMENSION = Math.round(BOARD_DIMENSION / 2) - 1
 const GAME_TICK = 500
 
@@ -129,7 +136,7 @@ const addArrowsListeners = () => {
     window.addEventListener(
         'keydown',
         (event) => {
-            switch(event.key){
+            switch (event.key) {
                 case 'ArrowUp':
                     event.preventDefault()
                     _direction = 'up'
