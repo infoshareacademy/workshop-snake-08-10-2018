@@ -1,11 +1,19 @@
 const CELL_DIMENSION = 10
 
-const _board = [
-    [1, 'H', 0, 1],
-    [1, 1, 0, 1],
-    [1, 1, 0, 1],
-    [1, 0, 0, 1]
-]
+let _board = null
+
+const init = () => {
+    _board = makeBoardArray(10)
+    renderBoard()
+}
+
+const makeBoardArray = (dimension) => {
+    return (new Array(dimension))
+        .fill(1)
+        .map(
+            (e, i, a) => (new Array(dimension)).fill(1)
+        )
+}
 
 const renderBoard = () => {
     _board.forEach(renderRow)
@@ -44,4 +52,4 @@ const renderCell = (cell, rowDiv) => {
     rowDiv.appendChild(cellDiv)
 }
 
-renderBoard()
+init()
