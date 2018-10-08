@@ -24,19 +24,28 @@ const checkIfMoveIsAvailable = () => {
         case 'up':
             nextHeadPosition = { x: _snake[0].x, y: _snake[0].y - 1 }
             break
+        case 'down':
+            nextHeadPosition = { x: _snake[0].x, y: _snake[0].y + 1 }
+            break
+        case 'left':
+            nextHeadPosition = { x: _snake[0].x - 1, y: _snake[0].y }
+            break
+        case 'right':
+            nextHeadPosition = { x: _snake[0].x + 1, y: _snake[0].y }
+            break
     }
 
-    if(
+    if (
         _board[nextHeadPosition.y] &&
         _board[nextHeadPosition.y][nextHeadPosition.x]
-    ){
+    ) {
         move(nextHeadPosition)
-    }else{
+    } else {
         endGame()
     }
 }
 
-const move = (nextHeadPosition) => { 
+const move = (nextHeadPosition) => {
     _snake = [nextHeadPosition].concat(_snake).slice(0, -1)
 }
 
