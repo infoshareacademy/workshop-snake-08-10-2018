@@ -16,6 +16,15 @@ const gameTick = () => {
 }
 
 const init = () => {
+    setInterval(
+        gameTick,
+        GAME_TICK
+    )
+
+    renderBoard()
+}
+
+const placeSnakeOnBoard = () => {
     _board = makeBoardArray(BOARD_DIMENSION)
     _snake.forEach((snakePosition, i) => {
         if(i === 0){
@@ -24,13 +33,6 @@ const init = () => {
             _board[snakePosition.y][snakePosition.x] = 0
         }
     })
-
-    setInterval(
-        gameTick,
-        GAME_TICK
-    )
-
-    renderBoard()
 }
 
 const makeBoardArray = (dimension) => {
@@ -43,7 +45,9 @@ const makeBoardArray = (dimension) => {
 
 const renderBoard = () => {
     document.body.innerText = ''
-    
+
+    placeSnakeOnBoard()
+
     _board.forEach(renderRow)
 }
 
