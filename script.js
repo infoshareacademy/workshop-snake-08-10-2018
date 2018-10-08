@@ -13,7 +13,31 @@ const _snake = [
 ]
 
 const gameTick = () => {
+    checkIfMoveIsAvailable()
+    
     renderBoard()
+}
+
+const checkIfMoveIsAvailable = () => {
+    let nextHeadPosition = null
+    switch (_direction) {
+        case 'up':
+            nextHeadPosition = { x: _snake[0].x, y: _snake[0].y - 1 }
+            break
+    }
+
+    if(
+        _board[nextHeadPosition.y] &&
+        _board[nextHeadPosition.y][nextHeadPosition.x]
+    ){
+        move()
+    }else{
+        endGame()
+    }
+}
+
+const move = () => { 
+    console.log('Im moving!')
 }
 
 const endGame = () => {
@@ -33,9 +57,9 @@ const init = () => {
 const placeSnakeOnBoard = () => {
     _board = makeBoardArray(BOARD_DIMENSION)
     _snake.forEach((snakePosition, i) => {
-        if(i === 0){
+        if (i === 0) {
             _board[snakePosition.y][snakePosition.x] = 'H'
-        }else{
+        } else {
             _board[snakePosition.y][snakePosition.x] = 0
         }
     })
